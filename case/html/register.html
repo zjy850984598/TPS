@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="../js/jquery-1.11.1.min.js"></script>-->
+		<link rel="stylesheet" href="../css/register.css" />
+		<script src="../js/cookie.js"></script>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div id="register">			
+			<div id="register1">
+				<p class="p1"><a style="border-bottom:2px solid #ed4242; ;"href="javascript:;">邮箱注册</a><a href="javascript:;">手机号码注册</a></p>
+				<div class="ema" style="z-index:1">
+					
+					<form id="cc"  action="login.html">
+						<p style="margin-top:23px;" class="p2"><input id="eMa" type="text" placeholder="  电子邮箱"/><span class="s1"></span><b class="s2"></b></p>
+						<p  style="display: none;" class="p2 p8"><input type="text" placeholder="  验证码"/><span class="s3"></span><b class="s4"></b></p>
+
+						<p class="p2"><input id="pwd" type="text" placeholder="  请输入密码"/><span class="s5"></span><b class="s6"></b></p>
+						<p class="p2"><input id="qpwd" type="text" placeholder="  请再次输入密码"/><span class="s7"></span><b class="s8"></b></p>
+						<p class="p5"><input type="checkbox" checked/>我同意<a href=""style="color:#0066ff">《用户注册协议》</a></p>
+						<p class="p2" ><input style="background: #ed4242;color:#fff;border:none;margin:16px 0" id="emal" type="submit" value="同意协议并注册" /></p>
+						<p class="p7">已有账号？<a href="login.html"style="color:#0066ff">去登录</a></p>				
+					</form>
+				</div>
+				<div class="iphone ema" style="display: none;">
+					<form id="zz" action="login.html">
+						<p style="margin-top:23px;" class="p2"><input id="call" type="text" placeholder="  请输入手机号(仅限中国大陆手机号)"/><span class="s9"></span><b class="s10"></b></p>
+						<p class="p2"><input id="pswd" type="text" placeholder="  请输入密码"/><span class="s11"></span><b class="s12"></b></p>
+						<p class="p2"><input id="qpswd" type="text" placeholder="  请再次输入密码"/><span class="s13"></span><b class="s14"></b></p>
+						<p class="p5"><input type="checkbox" checked/>我同意<a href=""style="color:#0066ff">《用户注册协议》</a></p>
+						<p class="p2" ><input id="lll" style="background: #ed4242;color:#fff;border:none;margin:16px 0" type="submit" value="同意协议并注册" /></p>
+						<p class="p7">已有账号？<a href=""style="color:#0066ff">去登录</a></p>				
+				</form>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
+<script src="../js/register.js"></script>

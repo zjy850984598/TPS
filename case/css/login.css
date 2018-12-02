@@ -1,0 +1,69 @@
+/*全局=======================*/
+*{
+	margin: 0;
+	padding: 0;	
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+img{
+	border:none;
+	vertical-align:middle ;
+}
+body{
+	font:12px "微软雅黑";
+	
+}
+html,body{
+	height:100%;
+}
+/*main*/
+#login{
+	width:100%;
+	height:100%;
+	background: #fedc57 url(../img/bg.gif) no-repeat center;
+	overflow: hidden;
+}
+#login1{
+	width:345px;
+	height:375px;
+	margin:190px 0 0 900px;
+	background: #fff;
+	padding:45px 0 0 35px;
+	/*position: relative;*/
+}
+
+.p1{
+	color:#9999a5;
+	font-size:18px;
+	font-weight:bold;
+	margin:0 0 40px 122px; 	
+}
+.p2{
+	width:300px;
+	height:40px;
+	border:none;
+	border:1px solid #e5e5e5;
+	border-radius:10px;
+	font-size:14px;
+	line-height: 40px;
+	margin-bottom: 16px;
+}
+.p3{
+	width:158px;
+	margin-right:20px;
+	vertical-align: top;
+}
+.s1{
+	display: inline-block;
+	width:120px;
+	height:38px;
+	line-height: 38px;
+	border:1px solid #9999A5;
+	font-size:18px;
+	background: url(../img/timg.jpg);
+}
