@@ -232,7 +232,7 @@ var $gl=$(".o1 li"),
 	
 	//gg remove
 	 $("#gg").click(function(){
-	 	$(this).remove();
+	 	$(this).hide();
 	 	
 	 })
 

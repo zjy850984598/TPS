@@ -7,7 +7,7 @@
 			new Shop().init().move();
 
 		})
-//		new Getajax().init();
+		new Getajax().init();
 //		new Getajax().init();
 		$(window).scroll(function(){
 			var sTop=$(document).scrollTop();
@@ -20,38 +20,52 @@
 		
 //	})
 //ajax请求对数据渲染页面
-// function Getajax(){
-// 	this.middle=$(".middle");
-// 	this.small=$(".oo");
-// 	this.big=$(".big");
-// 	this.init=function(){
-// 		var that=this;
-// 		$.ajax({
-// 			type:"get",
-// 			url:"../js/page11.json?id="+ new Date().getTime() ,
-// 			async:true,
-// 			success:function(msg){
-// 				var item=msg.ms;
-// 				var str="";
-// 				for(var i=0;i<item.length;i++){						
-// 						
-// 				
-// 				
-// 			}
-// 		});
-// 	}
-// }
- function  Zoom(){
- 	this.xlist=$("ol>li");
- 	this.mlist=$(".middle>li");
- 	this.blist=$(".big>li");
+   function Getajax(){
+   	this.middle=$(".middle");
+   	this.small=$(".oo");
+   	this.big=$(".big");
+   	this.init=function(){
+   		var that=this;
+   		$.ajax({
+   			type:"get",
+   			url:"../js/page11.json?id="+ new Date().getTime() ,
+   			async:true,
+   			success:function(msg){
+   				var item=msg.zd,
+   					ctem=msg.xt;
+   				var zStr="",
+   					dStr="",
+   					xStr="";
+   				for(var i=0;i<item.length;i++){						
+   					zStr+=`<li><img src="../img/${item[i]}"></li>`	
+   					xStr+=`<li><img src="../img/${ctem[i]}"></li>`	
+   					dStr+=`<li style="z-index:12"><img src="../img/${item[i]}"></li>`	
+   					
+   			}
+   				that.middle.html(zStr);
+   				that.small.html(xStr);
+   				that.big.html(dStr);
+   			}
+   		});
+   		
+   }
+
+   }
+   
+   //渲染放大镜
+      function  Zoom(){
+   	this.xlist=$("ol");
+   	console.log(this.xlist);
+   	this.mlist=$(".middle");
+   	this.blist=$(".big");
 	this.mask=$("#mask");
 	this.big=$(".big");
 	this.init=function(){
 		var that=this;
-		this.xlist.mouseenter(function(){
-			that.mlist.eq($(this).index()).css("z-index",9).siblings("li").css("z-index",0);
-			that.blist.eq($(this).index()).css("z-index",9).siblings("li").css("z-index",0);
+		this.xlist.on("mouseenter","li",function(){
+			
+			$(".middle>li").eq($(this).index()).css("z-index",9).siblings("li").css("z-index",0);
+			$(".big>li").eq($(this).index()).css("z-index",9).siblings("li").css("z-index",0);
 		})
 		this.mlist.mouseenter(function(){
 			that.mask.css("display","block");
@@ -83,11 +97,59 @@
 				that.mask.css({"left":x,"top":y});
 				var x1=x*$(".big").width()/$("#mask").width();
 				var y1=y*$(".big").height()/$("#mask").height();
-				that.blist.css({"left":-x1,"top":-y1})
+				$(".big>li").css({"left":-x1,"top":-y1})
 				
 		})
 	}
- }
+   }
+// function  Zoom(){
+// 	this.xlist=$("ol>li");
+// 	console.log(this.xlist);
+// 	this.mlist=$(".middle>li");
+// 	this.blist=$(".big>li");
+//	this.mask=$("#mask");
+//	this.big=$(".big");
+//	this.init=function(){
+//		var that=this;
+//		this.xlist.mouseenter(function(){
+//			that.mlist.eq($(this).index()).css("z-index",9).siblings("li").css("z-index",0);
+//			that.blist.eq($(this).index()).css("z-index",9).siblings("li").css("z-index",0);
+//		})
+//		this.mlist.mouseenter(function(){
+//			that.mask.css("display","block");
+//			that.big.css("display","block");
+//		}).mouseleave(function(){
+//			that.mask.css("display","none");
+//			that.big.css("display","none");
+//		})
+//		this.mask.mouseenter(function(){
+//			that.mask.css("display","block");
+//			that.big.css("display","block");
+//		}).mouseleave(function(){
+//			that.mask.css("display","none");
+//			that.big.css("display","none");
+//		})
+//		return this;
+//	}
+//	this.move=function(){
+//		var that=this;
+//		this.mask.mousemove(function(e){
+//			var e=e||event;			
+//			var x=e.pageX-$(".middle").offset().left-$("#mask").width()/2,
+//				y=e.pageY-$(".middle").offset().top-$("#mask").height()/2;
+//				//边界处理
+//				var maxL=$(".middle").outerWidth()-$("#mask").width();
+//				var maxT=$(".middle").outerHeight()-$("#mask").height();
+//				x=Math.min(Math.max(0,x),maxL);
+//				y=Math.min(Math.max(0,y),maxT);			
+//				that.mask.css({"left":x,"top":y});
+//				var x1=x*$(".big").width()/$("#mask").width();
+//				var y1=y*$(".big").height()/$("#mask").height();
+//				that.blist.css({"left":-x1,"top":-y1})
+//				
+//		})
+//	}
+// }
  //点击加减内容
  	function Sumj(){
  		this.ipt=$(".b1>input");
@@ -153,21 +215,51 @@
  	this.timer=null;
  	this.oImg=null;
    	this.suc=$("#main5");
+   	this.mc=$(".mc").html();
+   	this.bh=$(".bh").html();
+   	this.pri=$(".pri").html();
+   	this.cou=$(".ipt1").val();
 // 	this.jz=$(".jz");
  	this.init=function(){
-
-	 	//点击时将其所对应的信息存入到localstorge
-	 	localStorage.name="金大福 皮带手表男士手表633CG-47*12深蓝色 全国包邮";
-	 	localStorage.id="1";
-	 	localStorage.price="16000.00";
-	 	localStorage.count="1";
-	 	localStorage.src="zd4.jpg";
+ 		var flag=true;
+   		var arr=[];
+		var data={
+			"name":this.mc,
+			"id":this.bh,
+			"count":this.cou,
+			"price":this.pri,
+			"src":"zd4.jpg"
+		};
+		var brr=localStorage.data;
+		if(brr){
+			arr=JSON.parse(brr);
+			console.log(arr)
+			for(var i=0;i<arr.length;i++){
+				if(arr[i].id==data.id){
+					arr[i].count++;
+					flag=false;
+					break;
+				}
+			}
+		}
+		if(flag){
+			
+			arr.push(data);
+		}
+			var d=JSON.stringify(arr);
+			localStorage.data=d;
+		
+	 	
 	 	return this;
  	}
 //定义一个函数用来获取加入购物车的数量
 	this.count=function(){
 		var sum=0;
-		var sum=localStorage.count;
+		var str=localStorage.data;
+		var crr=JSON.parse(str);
+		for(var i=0;i<crr.length;i++){
+			sum+=crr[i].count;
+		}
 		this.car.html("购物车("+sum+")");
 		return this;
 	}
@@ -180,7 +272,7 @@
 		var res=$.fnInit(this.enniu,this.car);
 		//设置图片起始点位置
 		var x=res.startPoint.x;
-		console.log(x)
+
 		var y=res.startPoint.y;
 		this.oImg.css({"width":20,"height":20,"position":"absolute","left":x,
 		"top":y});
@@ -200,7 +292,6 @@
 				clearInterval(that.timer);
 				that.count();
 				that.suc.css("display","block");
-				console.log(that.suc)
 			}
 		},30)
 		return this;
